@@ -277,7 +277,7 @@ if ( UNIX AND NOT ( APPLE OR SYSTEM_IS_OPENBSD OR HAIKU ) )
 endif()
 
 # Check if we need to add -lstdc++fs or -lc++fs or nothing
-file( WRITE ${CMAKE_CURRENT_BINARY_DIR}/main.cpp "#if defined(USE_BOOST_FS)\n#include <boost/filesystem.hpp>\nnamespace fs = boost::filesystem;\n#else\n#include <filesystem>\nnamespace fs = std::filesystem\n#endif\nint main( int argc, char ** argv ) {\n  fs::path p( argv[ 0 ] );\n  return p.parent_path().string().length();\n}" )
+file( WRITE ${CMAKE_CURRENT_BINARY_DIR}/main.cpp "#if defined(USE_BOOST_FS)\n#include <boost/filesystem.hpp>\nnamespace fs = boost::filesystem;\n#else\n#include <filesystem>\nnamespace fs = std::filesystem;\n#endif\nint main( int argc, char ** argv ) {\n  fs::path p( argv[ 0 ] );\n  return p.parent_path().string().length();\n}" )
 try_compile( STD_FS_NO_LIB_NEEDED ${CMAKE_CURRENT_BINARY_DIR}
              SOURCES ${CMAKE_CURRENT_BINARY_DIR}/main.cpp
              CXX_STANDARD 17
