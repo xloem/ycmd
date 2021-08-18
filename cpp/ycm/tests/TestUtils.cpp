@@ -15,21 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with ycmd.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "TestUtils.h"
-
 #include <whereami.c>
-
-namespace std {
-
-namespace filesystem {
-
-void PrintTo( const fs::path &path, std::ostream *os ) {
-  *os << path;
-}
-
-} // namespace filesystem
-
-} // namespace std
 
 namespace YouCompleteMe {
 
